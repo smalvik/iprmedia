@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое задание — Product Manager, IPR ПРОФ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #FFC928;
+            --yellow-light: #FFF3D0;
+            --yellow-hover: #FFD54F;
+            --black: #000000;
+            --white: #FFFFFF;
+            --bg: #F0F2F5;
+            --card: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E0E0E0;
+            --section-gap: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--black);
+            padding: 0 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 64px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--yellow);
+            white-space: nowrap;
+            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.4rem 0.7rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--black);
+            background: var(--yellow);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--black);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: var(--yellow);
+            border-radius: 50%;
+            opacity: 0.08;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.15;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.5;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .hero-meta-item strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ===== PREFACE ===== */
+        .preface {
+            background: linear-gradient(135deg, var(--yellow-light) 0%, var(--white) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: var(--section-gap);
+            border: 1px solid var(--yellow);
+        }
+
+        .preface h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .preface p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            margin-bottom: var(--section-gap);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-number {
+            background: var(--yellow);
+            color: var(--black);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--black);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--black);
+        }
+
+        .card p {
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .card ul, .card ol {
+            margin: 0.5rem 0 0.75rem 1.25rem;
+            color: var(--text);
+        }
+
+        .card li {
+            margin-bottom: 0.35rem;
+        }
+
+        .card strong {
+            color: var(--black);
+        }
+
+        /* ===== HIGHLIGHT CARD ===== */
+        .card-highlight {
+            border-left: 4px solid var(--yellow);
+            background: var(--yellow-light);
+        }
+
+        .card-dark {
+            background: var(--black);
+            color: var(--white);
+            border: none;
+        }
+
+        .card-dark h3, .card-dark h4, .card-dark strong {
+            color: var(--yellow);
+        }
+
+        .card-dark p, .card-dark li {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* ===== TABLE ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 0.75rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+        }
+
+        thead th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        thead th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        tbody td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--yellow-light);
+        }
+
+        /* ===== KPI GRID ===== */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--yellow);
+        }
+
+        .kpi-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .kpi-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--black);
+        }
+
+        .kpi-target {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== SCENARIO CARD ===== */
+        .scenario {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--yellow);
+        }
+
+        .scenario-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+            background: var(--black);
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .scenario h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== FLOW DIAGRAM ===== */
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .flow-step {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .flow-step.accent {
+            background: var(--yellow);
+            border-color: var(--yellow);
+            font-weight: 700;
+        }
+
+        .flow-arrow {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== AI TABLE ===== */
+        .ai-scenario {
+            background: var(--card);
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .ai-scenario-header {
+            background: var(--black);
+            color: var(--yellow);
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .ai-scenario-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .ai-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ai-row-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .ai-row-value {
+            font-size: 0.95rem;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--yellow);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 0.4rem;
+            width: 12px;
+            height: 12px;
+            background: var(--yellow);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--yellow);
+        }
+
+        .timeline-year {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-goal {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== RISK TABLE ===== */
+        .risk-high { color: #D32F2F; font-weight: 700; }
+        .risk-med { color: #F57C00; font-weight: 700; }
+        .risk-low { color: #388E3C; font-weight: 700; }
+        .risk-crit { color: #B71C1C; font-weight: 700; }
+
+        /* ===== SELF-ASSESSMENT ===== */
+        .assessment-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .assessment-row:last-child {
+            border-bottom: none;
+        }
+
+        .assessment-score {
+            background: var(--yellow);
+            color: var(--black);
+            font-weight: 900;
+            font-size: 1.1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .assessment-info {
+            flex: 1;
+        }
+
+        .assessment-block {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--black);
+        }
+
+        .assessment-comment {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--yellow);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== VISION ===== */
+        .vision-block {
+            background: var(--black);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-block::before {
+            content: '\201C';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: var(--yellow);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+        }
+
+        .vision-block p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1rem;
+        }
+
+        .vision-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== PHASE ===== */
+        .phase {
+            border-left: 4px solid var(--yellow);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .phase h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== HYPOTHESIS ===== */
+        .hypothesis {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--yellow);
+        }
+
+        .hypothesis-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-light);
+        }
+
+        .hypothesis h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        .hypothesis blockquote {
+            font-style: italic;
+            color: var(--text-light);
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .footer strong {
+            color: var(--yellow);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .hero-meta { gap: 1rem; }
+            .main { padding: 1.5rem 1rem 3rem; }
+            .card, .scenario { padding: 1.25rem; }
+            .section-title { font-size: 1.25rem; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .ai-row { grid-template-columns: 1fr; }
+            .nav-inner { gap: 0.75rem; }
+            .nav-link { font-size: 0.72rem; padding: 0.3rem 0.5rem; }
+            .vision-block { padding: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+            .hero-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">IPR ПРОФ</div>
+        <div class="nav-links">
+            <a href="#block-1" class="nav-link">1</a>
+            <a href="#block-2" class="nav-link">2</a>
+            <a href="#block-3" class="nav-link">3</a>
+            <a href="#block-4" class="nav-link">4</a>
+            <a href="#block-5" class="nav-link">5</a>
+            <a href="#block-6" class="nav-link">6</a>
+            <a href="#block-7" class="nav-link">7</a>
+            <a href="#block-8" class="nav-link">8</a>
+            <a href="#block-9" class="nav-link">9</a>
+            <a href="#block-10" class="nav-link">10</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-badge">Тестовое задание</div>
+    <h1>Трансформация <span>IPR ПРОФ</span> в ежедневный инструмент преподавателя</h1>
+    <p class="hero-sub">От «электронной библиотеки для аккредитации» к цифровой методической среде СПО</p>
+    <div class="hero-meta">
+        <div class="hero-meta-item"><strong>Позиция:</strong> Product Manager</div>
+        <div class="hero-meta-item"><strong>Кандидат:</strong> Виталий Смирнов</div>
+        <div class="hero-meta-item"><strong>Дата:</strong> Апрель 2026</div>
+    </div>
+</header>
+
+<main class="main">
+
+<!-- PREFACE -->
+<section class="preface" id="preface">
+    <h2>Предисловие: анализ экосистемы IPR Media</h2>
+    <p>Перед выполнением задания я изучил оба ключевых продукта компании — <strong>IPR SMART</strong> (для ВУЗов) и <strong>PROFобразование</strong> (для СПО) — как два продукта одной экосистемы. Ряд решений из IPR SMART можно адаптировать для PROF, не изобретая с нуля:</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Возможность</th>
+                    <th>IPR SMART (ВУЗы)</th>
+                    <th>IPR PROF (СПО)</th>
+                    <th>Потенциал</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>SMART-курсы</strong></td>
+                    <td>Есть (интерактивные курсы с тестами)</td>
+                    <td>Нет — только тесты</td>
+                    <td><strong>Высокий</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Образовательные модули</strong></td>
+                    <td>Есть (структурированные блоки)</td>
+                    <td>Нет</td>
+                    <td><strong>Высокий</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Лекторий (видео)</strong></td>
+                    <td>Есть</td>
+                    <td>Нет</td>
+                    <td>Средний</td>
+                </tr>
+                <tr>
+                    <td><strong>Интеграция с LMS</strong></td>
+                    <td>Есть (API, SSO)</td>
+                    <td>Ограничена</td>
+                    <td><strong>Критический</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Лаборатории СПО</strong></td>
+                    <td>Нет</td>
+                    <td>Есть (уникальная фича)</td>
+                    <td>Развивать</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card card-highlight" style="margin-top: 1rem;">
+        <p style="margin: 0;"><strong>Вывод:</strong> IPR SMART ушёл дальше в интерактивности (курсы, модули, лекторий, интеграции). PROF сильнее в специализации под СПО (лаборатории, структура по профессиям). Стратегия: <strong>перенести проверенные механики из SMART, сохранив уникальную специализацию PROF</strong>.</p>
+    </div>
+</section>
+
+<!-- BLOCK 1 -->
+<section class="section" id="block-1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div>
+            <div class="section-title">Трансформация продукта</div>
+            <div class="section-subtitle">За счёт чего продукт станет ежедневным инструментом</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Ключевые барьеры текущего использования</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Барьер</th><th>Суть проблемы</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>ЭБС оторвана от учебного процесса</strong></td><td>Преподаватель не имеет инструмента интеграции контента в свои занятия</td></tr>
+                    <tr><td><strong>Нет триггера возвращения</strong></td><td>После первого захода нет причины вернуться — нет уведомлений, задач, дедлайнов</td></tr>
+                    <tr><td><strong>UX не соответствует ожиданиям</strong></td><td>Студенты привыкли к UX уровня VK/YouTube — сложный поиск, перегруженный интерфейс</td></tr>
+                    <tr><td><strong>Ценность не проявлена</strong></td><td>165 000+ единиц контента скрыты за интерфейсом каталога</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scenario 1 -->
+    <div class="scenario">
+        <div class="scenario-label">Сценарий 1</div>
+        <h3>«Рабочий стол преподавателя» — ежедневный дашборд</h3>
+        <p><strong>Проблема:</strong> преподаватель заходит в ЭБС только чтобы «найти книгу». Нет рабочего пространства.</p>
+        <p><strong>Решение:</strong> персональный дашборд, который агрегирует:</p>
+        <ul>
+            <li><strong>Мои дисциплины</strong> — список предметов с привязанной литературой (автоподбор по ФГОС + ручная корректировка)</li>
+            <li><strong>Задания студентам</strong> — назначает главы к прочтению → студент получает задание в ЛК → преподаватель видит статистику</li>
+            <li><strong>Мои группы</strong> — статистика: книговыдачи, глубина чтения, активность</li>
+            <li><strong>Новинки по дисциплинам</strong> — персонализированная лента обновлений</li>
+        </ul>
+        <div class="card card-highlight" style="margin-top: 1rem;">
+            <p style="margin: 0;"><strong>Книговыдачи:</strong> каждое назначение = 20-30 книговыдач (число студентов). Один преподаватель ведёт 3-5 дисциплин × 2-4 группы = <strong>200-600 книговыдач/семестр</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="scenario">
+        <div class="scenario-label">Сценарий 2</div>
+        <h3>«Учебный трек студента» — персонализированный путь обучения</h3>
+        <p><strong>Проблема:</strong> студент не знает, что искать. Каталог из 17 500+ изданий перегружает.</p>
+        <p><strong>Решение:</strong> при первом входе студент указывает специальность и курс. Платформа формирует:</p>
+        <ul>
+            <li><strong>Мой учебный план</strong> — литература по текущим дисциплинам</li>
+            <li><strong>Задания от преподавателей</strong> — назначенные материалы с дедлайнами</li>
+            <li><strong>Рекомендации</strong> — «Студенты твоей специальности также читают...»</li>
+            <li><strong>Подготовка к экзаменам</strong> — автоматические подборки перед сессией</li>
+            <li><strong>Прогресс</strong> — визуальный трекер прочитанного</li>
+        </ul>
+        <div class="card card-highlight" style="margin-top: 1rem;">
+            <p style="margin: 0;"><strong>Книговыдачи:</strong> персонализация повышает конверсию. Вместо «ищи в 17 500 изданий» → «вот 15 книг по 5 предметам». Переход Dormant → Occasional = <strong>+50% книговыдач</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="scenario">
+        <div class="scenario-label">Сценарий 3</div>
+        <h3>«Методический конструктор» — сборка РПД и списков литературы</h3>
+        <p><strong>Проблема:</strong> преподаватели тратят часы на формирование списков литературы для РПД — вручную проверяя актуальность изданий.</p>
+        <p><strong>Решение:</strong> конструктор, который:</p>
+        <ul>
+            <li>Выбор специальности → дисциплины → автоматический подбор изданий из каталога</li>
+            <li>Проверка актуальности: год издания, гриф, соответствие ФГОС</li>
+            <li>Готовый блок «Список литературы» в формате РПД</li>
+            <li>Уведомления о новых изданиях по дисциплинам</li>
+        </ul>
+        <div class="card card-highlight" style="margin-top: 1rem;">
+            <p style="margin: 0;"><strong>Книговыдачи:</strong> каждый список = регулярные обращения к изданиям. Это <strong>системная привязка</strong> контента к учебному процессу.</p>
+        </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Activation Rate</div>
+                <div class="kpi-value">30% → 65%</div>
+                <div class="kpi-target">% завершивших онбординг</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">WAU/MAU</div>
+                <div class="kpi-value">15% → 35%</div>
+                <div class="kpi-target">Регулярность</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Книговыдач / польз. / мес.</div>
+                <div class="kpi-value">1.5 → 5</div>
+                <div class="kpi-target">Глубина использования</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">D7 Retention</div>
+                <div class="kpi-value">20% → 40%</div>
+                <div class="kpi-target">Возвратность</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 2 -->
+<section class="section" id="block-2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div>
+            <div class="section-title">УМК как точка сборки контента</div>
+            <div class="section-subtitle">Живая оболочка вокруг контента, а не отдельный сложный продукт</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Логика сборки контента вокруг УМК</h3>
+        <p>УМК в СПО — пакет документов по дисциплине: РПД, ФОС, методические указания, список литературы. Сегодня преподаватель собирает это вручную. <strong>Идея: сделать УМК «живой оболочкой» вокруг контента на платформе.</strong></p>
+        <div class="flow">
+            <div class="flow-step">ФГОС СПО</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">ОПОП колледжа</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Дисциплина</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step accent">УМК на платформе</div>
+        </div>
+        <p>Состав УМК на платформе:</p>
+        <ul>
+            <li>Основная литература (автоподбор по ФГОС)</li>
+            <li>Дополнительная литература (ручной выбор)</li>
+            <li>Практические задания (банк кейсов, тесты)</li>
+            <li>Методические указания (загрузка преподавателем)</li>
+            <li>ФОС — фонд оценочных средств</li>
+            <li>Индустриальные кейсы от партнёров</li>
+        </ul>
+    </div>
+
+    <div class="card card-highlight">
+        <h3>Принцип: «Начни с малого — получи большое»</h3>
+        <p>Преподаватель не должен «создавать УМК» — это пугает. Вместо этого:</p>
+        <ol>
+            <li><strong>1 минута:</strong> Выбрать специальность и дисциплину → платформа автоматически формирует подборку</li>
+            <li><strong>5 минут:</strong> Скорректировать — убрать лишнее, добавить своё</li>
+            <li><strong>Опционально:</strong> Добавить тесты, прикрепить методические указания, назначить студентам</li>
+            <li><strong>Результат:</strong> «список литературы» естественно вырастает в полноценный УМК</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>Повседневная работа преподавателя</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Время</th><th>Действие</th><th>Что происходит</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Начало семестра</strong></td><td>Формирует подборки</td><td>Автоподбор → корректировка → назначение группам</td></tr>
+                    <tr><td><strong>Перед занятием</strong></td><td>Назначает материал</td><td>Выбирает главы → студенты получают уведомление</td></tr>
+                    <tr><td><strong>После занятия</strong></td><td>Проверяет статистику</td><td>Кто прочитал, среднее время, % выполнения</td></tr>
+                    <tr><td><strong>К сессии</strong></td><td>Проверяет покрытие</td><td>Какие темы закрыты литературой, где пробелы</td></tr>
+                    <tr><td><strong>К аккредитации</strong></td><td>Выгружает отчёт</td><td>Книгообеспеченность по ФГОС, книговыдачи</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Механики регулярного возвращения</h3>
+        <ul>
+            <li><strong>Новинки по дисциплинам</strong> — уведомления при появлении новых изданий</li>
+            <li><strong>Дайджест активности</strong> — еженедельный отчёт по группам</li>
+            <li><strong>Напоминания</strong> — «У вас 2 дисциплины без подборок литературы»</li>
+            <li><strong>Сезонные триггеры</strong> — начало семестра, подготовка к сессии</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Дисциплин с подборками</div>
+                <div class="kpi-value">500 → 2 000</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">% преподавателей</div>
+                <div class="kpi-value">20% → 40%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Книговыдачи через подборки</div>
+                <div class="kpi-value">10% → 30%</div>
+                <div class="kpi-target">от общих</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">WAU преподавателей</div>
+                <div class="kpi-value">1 → 2</div>
+                <div class="kpi-target">раз/неделю</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 3 -->
+<section class="section" id="block-3">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <div>
+            <div class="section-title">Практикоориентированность</div>
+            <div class="section-subtitle">Перевод продукта в практическую плоскость обучения</div>
+        </div>
+    </div>
+
+    <div class="scenario">
+        <div class="scenario-label">Решение 1</div>
+        <h3>Банк практических кейсов от индустриальных партнёров</h3>
+        <p>IPR Media уже наращивает сеть партнёров и аккумулирует практикоориентированные кейсы. Нужно <strong>встроить их в учебный процесс</strong>.</p>
+        <h4>Формат кейса на платформе:</h4>
+        <ul>
+            <li><strong>Отрасль + партнёр</strong> (бренд компании)</li>
+            <li><strong>Описание ситуации</strong> (реальная задача из практики)</li>
+            <li><strong>Задание студенту</strong></li>
+            <li><strong>Материалы для подготовки</strong> — ссылки на издания из каталога (генерирует книговыдачи!)</li>
+            <li><strong>Критерии оценки + экспертный разбор</strong></li>
+        </ul>
+        <p><strong>Связь с Профессионалитетом:</strong> проект требует интеграции работодателей — банк кейсов = готовый инструмент для колледжей-участников.</p>
+        <p><strong>Интеграция с экосистемой:</strong> кейсы из PROF → входная точка в проектную работу на DataLIB.Проекты.</p>
+    </div>
+
+    <div class="scenario">
+        <div class="scenario-label">Решение 2</div>
+        <h3>Практические задания с проверкой</h3>
+        <p>Расширение существующего раздела тестов (369 тестов):</p>
+        <ul>
+            <li><strong>Тесты по главам</strong> — привязаны к разделам изданий → стимул прочитать</li>
+            <li><strong>Ситуационные задания</strong> — мини-кейсы с вариантами решений</li>
+            <li><strong>Задания с развёрнутым ответом</strong> — студент привязывает цитату из издания</li>
+        </ul>
+        <div class="card card-highlight" style="margin-top: 1rem;">
+            <p style="margin: 0;"><strong>Ключевое:</strong> каждое задание требует обращения к контенту платформы → органический рост книговыдач.</p>
+        </div>
+    </div>
+
+    <div class="scenario">
+        <div class="scenario-label">Решение 3</div>
+        <h3>Цифровые стажировки и профессиональные симуляции</h3>
+        <p>Модульные мини-курсы, моделирующие рабочий день специалиста:</p>
+        <ul>
+            <li>«День бухгалтера» — типовые задачи с профильной литературой</li>
+            <li>«Приёмка на строительном объекте» — ситуационные задания с нормативной документацией</li>
+            <li>Привязка к 200+ специальностям каталога PROF</li>
+        </ul>
+        <p><strong>Аналог из IPR SMART:</strong> SMART-курсы — интерактивный формат уже разработан для ВУЗов, адаптировать под практику СПО.</p>
+    </div>
+
+    <div class="card">
+        <h3>Встраивание в учебный процесс</h3>
+        <div class="flow">
+            <div class="flow-step">Преподаватель создаёт подборку</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Добавляет кейс из банка</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step accent">Студент читает материалы</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Выполняет задание</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Преподаватель видит аналитику</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Кейсов в банке</div>
+                <div class="kpi-value">50 → 200</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Инд. партнёров</div>
+                <div class="kpi-value">10 → 30</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Студентов с заданиями</div>
+                <div class="kpi-value">10% → 25%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Книговыдачи через задания</div>
+                <div class="kpi-value">5% → 15%</div>
+                <div class="kpi-target">от общего</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 4 -->
+<section class="section" id="block-4">
+    <div class="section-header">
+        <div class="section-number">4</div>
+        <div>
+            <div class="section-title">Монетизация</div>
+            <div class="section-subtitle">Как продукт зарабатывает за счёт активации использования</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Текущая модель и её ограничение</h3>
+        <p>Сегодня: централизованная подписка от министерства → колледж получает доступ → использование минимальное → продление «по инерции».</p>
+        <p><strong>Проблема:</strong> продление не привязано к ценности. Решение о покупке принимает не пользователь. При сокращении бюджетов первыми отлетают «формальные» подписки.</p>
+    </div>
+
+    <div class="scenario">
+        <div class="scenario-label">Сценарий 1 — Основной</div>
+        <h3>«Методическая инфраструктура колледжа»</h3>
+        <p><strong>За что реально платит колледж:</strong> решение проблемы книгообеспеченности + инструмент для аккредитации + методическая поддержка.</p>
+
+        <h4>Цепочка ценности</h4>
+        <div class="flow">
+            <div class="flow-step">Преподаватель использует конструктор</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Студенты читают</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step accent">Книговыдачи растут</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Аккредитация закрыта</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step accent">Продление + апселл</div>
+        </div>
+
+        <h4>Сигналы для апселла:</h4>
+        <ul>
+            <li>Рост книговыдач на 50%+ за квартал → предложить расширенные модули</li>
+            <li>&gt;50% подборок включают задания → предложить банк кейсов</li>
+            <li>Запрос на интеграцию с LMS → предложить API-пакет и DataLIB</li>
+        </ul>
+    </div>
+
+    <div class="scenario">
+        <div class="scenario-label">Сценарий 2 — Целевой</div>
+        <h3>«Пакет Профессионалитет»</h3>
+        <p>Проект «Профессионалитет» = кластерная модель, колледж + работодатель. Требуется практикоориентированный контент.</p>
+        <ul>
+            <li><strong>Базовая подписка:</strong> контент + подборки</li>
+            <li><strong>+ Пакет «Профессионалитет»:</strong> банк кейсов + цифровые стажировки + аналитика для работодателя</li>
+            <li><strong>+ Пакет «Методическая поддержка»:</strong> конструктор УМК + отчёты для аккредитации + IPR Education</li>
+        </ul>
+        <p><strong>Ценообразование:</strong> модульная модель → начинают с базы, наращивают по мере использования.</p>
+    </div>
+
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Рост ARPU</div>
+                <div class="kpi-value">+5% → +15%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Конверсия в апселл</div>
+                <div class="kpi-value">5% → 12%</div>
+                <div class="kpi-target">клиентов</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Retention Rate</div>
+                <div class="kpi-value">+3 → +8 п.п.</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Клиентов на «Профессионалитет»</div>
+                <div class="kpi-value">10 → 40</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 5 -->
+<section class="section" id="block-5">
+    <div class="section-header">
+        <div class="section-number">5</div>
+        <div>
+            <div class="section-title">AI в продукте</div>
+            <div class="section-subtitle">Где ИИ усилит использование продукта</div>
+        </div>
+    </div>
+
+    <div class="ai-scenario">
+        <div class="ai-scenario-header">Сценарий 1: AI-ассистент «Подбор литературы по ФГОС»</div>
+        <div class="ai-scenario-body">
+            <div class="ai-row">
+                <div class="ai-row-label">Задача</div>
+                <div class="ai-row-value">Преподаватель формирует список литературы для РПД</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Как сейчас</div>
+                <div class="ai-row-value">Вручную ищет в каталоге, проверяет год, гриф, ФГОС. <strong>2-4 часа</strong> на дисциплину</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">С AI</div>
+                <div class="ai-row-value">Вводит специальность + дисциплину → AI анализирует 9 400+ учебников, выдаёт ранжированный список. <strong>5 минут</strong></div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Влияние</div>
+                <div class="ai-row-value">Каждый список = 5-10 изданий × 20-30 студентов = <strong>100-300 книговыдач</strong>. AI снимает барьер входа</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ai-scenario">
+        <div class="ai-scenario-header">Сценарий 2: AI-суммаризация и навигация по контенту</div>
+        <div class="ai-scenario-body">
+            <div class="ai-row">
+                <div class="ai-row-label">Задача</div>
+                <div class="ai-row-value">Студент ищет ответ на вопрос в учебнике на 300 страниц</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Как сейчас</div>
+                <div class="ai-row-value">Листает оглавление, пытается найти раздел. Часто бросает и идёт в Google</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">С AI</div>
+                <div class="ai-row-value">Задаёт вопрос → AI находит фрагменты, показывает ответ со ссылками на страницы → <strong>переход к тексту = книговыдача</strong></div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Влияние</div>
+                <div class="ai-row-value">ЭБС из «склада книг» → «умный помощник». Каждый вопрос = книговыдача. <strong>Ежедневное обращение вместо ежемесячного</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ai-scenario">
+        <div class="ai-scenario-header">Сценарий 3: AI-генератор тестов и заданий</div>
+        <div class="ai-scenario-body">
+            <div class="ai-row">
+                <div class="ai-row-label">Задача</div>
+                <div class="ai-row-value">Преподаватель создаёт ФОС (20-50 вопросов на дисциплину)</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Как сейчас</div>
+                <div class="ai-row-value">Пишет вопросы вручную — <strong>1-2 дня</strong> работы</div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">С AI</div>
+                <div class="ai-row-value">Выбирает главу → AI генерирует набор вопросов с привязкой к страницам. <strong>30 минут</strong></div>
+            </div>
+            <div class="ai-row">
+                <div class="ai-row-label">Влияние</div>
+                <div class="ai-row-value">Тесты привязаны к изданиям → студенты возвращаются к тексту → <strong>рост книговыдач и глубины чтения</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Доля преп. с AI</div>
+                <div class="kpi-value">10% → 25%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">AI-запросов / нед.</div>
+                <div class="kpi-value">2 → 5</div>
+                <div class="kpi-target">на пользователя</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Конверсия в книговыдачу</div>
+                <div class="kpi-value">40% → 60%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">AI-тестов создано</div>
+                <div class="kpi-value">200 → 1 000</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 6 -->
+<section class="section" id="block-6">
+    <div class="section-header">
+        <div class="section-number">6</div>
+        <div>
+            <div class="section-title">Работа с рынком</div>
+            <div class="section-subtitle">Понять, почему продукт покупают, но не используют активно</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Подход к кастдевам</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Сегмент</th><th>Кол-во</th><th>О чём спрашивать</th><th>Формат</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Преподаватели (активные)</strong></td>
+                        <td>7-10</td>
+                        <td>Как используют, что мешает, как формируют РПД</td>
+                        <td>40 мин, онлайн</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Преподаватели (неактивные)</strong></td>
+                        <td>7-10</td>
+                        <td>Почему не используют, как решают задачу без ЭБС</td>
+                        <td>30 мин, онлайн</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Библиотекари / методисты</strong></td>
+                        <td>5-7</td>
+                        <td>Как обосновывают подписку, какие отчёты нужны</td>
+                        <td>40 мин, онлайн</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Директора колледжей</strong></td>
+                        <td>3-5</td>
+                        <td>Как принимают решение о продлении, какие KPI</td>
+                        <td>30 мин, онлайн</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Студенты</strong></td>
+                        <td>10-15</td>
+                        <td>Как ищут материалы, знают ли про ЭБС, альтернативы</td>
+                        <td>20 мин</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Как фиксировать</h3>
+        <ul>
+            <li><strong>Шаблон интервью:</strong> гипотеза → вопросы → цитаты → инсайты</li>
+            <li><strong>Матрица гипотез:</strong> подтверждена / опровергнута / требует доработки</li>
+            <li><strong>JTBD-карточки:</strong> функциональный / эмоциональный / социальный job для каждого сегмента</li>
+            <li><strong>Приоритизация:</strong> частота упоминания × влияние на книговыдачи</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Работа с продажами и клиентами</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>С кем</th><th>О чём</th><th>Как фиксировать</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Менеджеры продаж</strong></td><td>Возражения, причины отказов, аргументы продления</td><td>Еженедельная синхронизация, shared-таблица</td></tr>
+                    <tr><td><strong>Аккаунт-менеджеры</strong></td><td>Причины оттока, запросы, жалобы, истории успеха</td><td>Карточка клиента: health score</td></tr>
+                    <tr><td><strong>High-usage клиенты</strong></td><td>Что делают правильно, масштабирование практики</td><td>Кейс-стади для маркетинга</td></tr>
+                    <tr><td><strong>Low-usage клиенты</strong></td><td>Почему не используют, барьеры</td><td>Сегментация по причинам</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="hypothesis">
+        <div class="hypothesis-num">Гипотеза 1</div>
+        <h4>«Нет проводника»</h4>
+        <blockquote>Продукт продаётся руководству (B2G), но никто не обучает конечных пользователей. Преподаватели не знают возможностей, студенты не знают о доступе.</blockquote>
+        <p><strong>Проверка:</strong> спросить у неактивных — знают ли про ЭБС, проходили ли обучение.</p>
+    </div>
+
+    <div class="hypothesis">
+        <div class="hypothesis-num">Гипотеза 2</div>
+        <h4>«Нет интеграции в рабочий процесс»</h4>
+        <blockquote>ЭБС существует отдельно от учебного процесса. Преподаватель использует Word для РПД, Moodle для заданий, файлообменник для материалов.</blockquote>
+        <p><strong>Проверка:</strong> карта инструментов преподавателя — где ЭБС, а где могла бы быть.</p>
+    </div>
+
+    <div class="hypothesis">
+        <div class="hypothesis-num">Гипотеза 3</div>
+        <h4>«Контент не соответствует реальной потребности»</h4>
+        <blockquote>Каталог большой, но преподаватели не находят именно то, что нужно. Контент слишком теоретический — нужна практика.</blockquote>
+        <p><strong>Проверка:</strong> анализ поисковых запросов (что ищут и не находят), интервью про разрыв.</p>
+    </div>
+
+    <div class="card">
+        <h3>KPI (3–6 месяцев)</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Интервью проведено</div>
+                <div class="kpi-value">30 → 60</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Гипотез обработано</div>
+                <div class="kpi-value">10 → 20</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Фич из исследований</div>
+                <div class="kpi-value">3 → 8</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Usage score low-usage</div>
+                <div class="kpi-value">+10% → +25%</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 7 -->
+<section class="section" id="block-7">
+    <div class="section-header">
+        <div class="section-number">7</div>
+        <div>
+            <div class="section-title">Модель развития продукта</div>
+            <div class="section-subtitle">Roadmap на 3 года</div>
+        </div>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year">2026 — Quick Wins</div>
+            <div class="timeline-goal">Цель: превратить «библиотеку для галочки» в инструмент, который используют каждую неделю</div>
+            <div class="card" style="margin-top: 0.5rem;">
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Квартал</th><th>Что делаем</th><th>Эффект</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Q2</strong></td><td>Рабочий стол преподавателя + конструктор подборок</td><td>Рост книговыдач через назначения</td></tr>
+                            <tr><td><strong>Q3</strong></td><td>Учебный трек студента + персонализация</td><td>Activation rate растёт</td></tr>
+                            <tr><td><strong>Q3</strong></td><td>CustDev-программа: 50+ интервью</td><td>Валидация, корректировка roadmap</td></tr>
+                            <tr><td><strong>Q4</strong></td><td>AI-подбор литературы (MVP)</td><td>Снижение барьера для преподавателей</td></tr>
+                            <tr><td><strong>Q4</strong></td><td>50 кейсов от инд. партнёров</td><td>Начало практикоориентированного контента</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-highlight" style="margin-top: 0.75rem;">
+                    <p style="margin: 0;"><strong>Метрика года:</strong> WAU/MAU 15% → 30%, книговыдач/польз./мес. 1.5 → 4</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2027 — Масштабирование</div>
+            <div class="timeline-goal">Цель: стать платформой, без которой колледж не может работать</div>
+            <div class="card" style="margin-top: 0.5rem;">
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Направление</th><th>Что делаем</th><th>Эффект</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>УМК</strong></td><td>Полноценный конструктор УМК</td><td>Системная привязка к учебному процессу</td></tr>
+                            <tr><td><strong>Практика</strong></td><td>500+ кейсов, стажировки по ТОП-20</td><td>PROF = не только книги, но и практика</td></tr>
+                            <tr><td><strong>AI</strong></td><td>Суммаризация, генерация тестов, ассистент</td><td>Частота использования ×2-3</td></tr>
+                            <tr><td><strong>Интеграции</strong></td><td>API для LMS, SSO, электронный журнал</td><td>Бесшовное встраивание</td></tr>
+                            <tr><td><strong>Монетизация</strong></td><td>Модульная модель: база + пакеты</td><td>ARPU +20-30%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-highlight" style="margin-top: 0.75rem;">
+                    <p style="margin: 0;"><strong>Метрика года:</strong> Retention 90%+, ARPU +25%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2028 — Целевая модель</div>
+            <div class="timeline-goal">Цель: IPR ПРОФ = стандарт цифровой методической среды СПО</div>
+            <div class="card" style="margin-top: 0.5rem;">
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Для кого</th><th>Роль IPR ПРОФ</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Преподаватель</strong></td><td>Единое рабочее место: литература + УМК + задания + аналитика + AI</td></tr>
+                            <tr><td><strong>Студент</strong></td><td>Персональная среда: от поступления до выпуска</td></tr>
+                            <tr><td><strong>Колледж</strong></td><td>Платформа управления качеством образования</td></tr>
+                            <tr><td><strong>Регион</strong></td><td>Аналитическая панель по всем колледжам региона</td></tr>
+                            <tr><td><strong>Индустрия</strong></td><td>Канал интеграции: кейсы, стажировки, оценка выпускников</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-highlight" style="margin-top: 0.75rem;">
+                    <p style="margin: 0;"><strong>Метрика года:</strong> каждый 3-й колледж страны (сейчас каждый 7-й)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 8 -->
+<section class="section" id="block-8">
+    <div class="section-header">
+        <div class="section-number">8</div>
+        <div>
+            <div class="section-title">Редизайн и смена платформы</div>
+            <div class="section-subtitle">Последовательность, баланс, риски</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <p><strong>Контекст:</strong> полный редизайн на новой дизайн-системе + миграция на новый стек. 388 000 пользователей, идёт подписочный цикл.</p>
+    </div>
+
+    <div class="phase">
+        <div class="phase-label">Фаза 0 — 1-2 месяца</div>
+        <h4>Подготовка</h4>
+        <ol>
+            <li><strong>Аудит текущего состояния:</strong> стек, архитектура, зависимости, техдолг, интеграции</li>
+            <li><strong>Аудит UX:</strong> тепловые карты, воронки, top-20 сценариев</li>
+            <li><strong>Формирование команды:</strong> product + design + tech lead + QA</li>
+            <li><strong>Определение scope MVP</strong></li>
+        </ol>
+    </div>
+
+    <div class="phase">
+        <div class="phase-label">Фаза 1 — 2-3 месяца</div>
+        <h4>Дизайн-система + прототипирование</h4>
+        <ol>
+            <li>Адаптация дизайн-системы под специфику PROF</li>
+            <li>Прототипирование ключевых сценариев</li>
+            <li>Юзабилити-тестирование (5-7 преподавателей, 10 студентов)</li>
+            <li>Параллельно: инфраструктура нового стека + backend</li>
+        </ol>
+    </div>
+
+    <div class="phase">
+        <div class="phase-label">Фаза 2 — 4-6 месяцев</div>
+        <h4>Параллельная разработка + миграция</h4>
+        <ol>
+            <li><strong>Strangler Fig Pattern:</strong> новые фичи на новом стеке, старый продукт работает</li>
+            <li>Поэтапный перенос: каталог, поиск → читалка, ЛК, оплата</li>
+            <li>Feature parity: 100% текущих сценариев перед переключением</li>
+            <li>Миграция данных: аккаунты, подборки, история, статистика</li>
+        </ol>
+    </div>
+
+    <div class="phase">
+        <div class="phase-label">Фаза 3 — 2-3 месяца</div>
+        <h4>Бета-тест + переключение</h4>
+        <ol>
+            <li>Closed beta: 5-10 лояльных колледжей</li>
+            <li>Еженедельная обратная связь + метрики</li>
+            <li>Toggle «Попробовать новую версию» → возможность вернуться</li>
+            <li>Полное переключение после достижения целевых метрик</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>Баланс редизайна и текущей разработки</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Принцип</th><th>Реализация</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Две команды</strong></td><td>Отдельная команда на новую версию, текущая — поддержка старой</td></tr>
+                    <tr><td><strong>Feature freeze</strong></td><td>Только баги и security на старой. Всё новое — на новом стеке</td></tr>
+                    <tr><td><strong>Общий бэклог</strong></td><td>Продуктовые идеи (блоки 1-5) реализуются уже на новом стеке</td></tr>
+                    <tr><td><strong>Синхронизация</strong></td><td>Двусторонняя синхронизация данных в параллельный период</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Ключевые риски</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Риск</th><th>Вероятность</th><th>Влияние</th><th>Митигация</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>Просадка метрик при переключении</td>
+                        <td class="risk-high">Высокая</td>
+                        <td class="risk-high">Высокое</td>
+                        <td>Мягкое переключение, обучение, откат</td>
+                    </tr>
+                    <tr>
+                        <td>Scope creep</td>
+                        <td class="risk-high">Высокая</td>
+                        <td class="risk-med">Среднее</td>
+                        <td>Жёсткий MVP, review каждые 2 недели</td>
+                    </tr>
+                    <tr>
+                        <td>Потеря данных при миграции</td>
+                        <td class="risk-low">Низкая</td>
+                        <td class="risk-crit">Критическое</td>
+                        <td>Многоэтапное тестирование, rollback-план</td>
+                    </tr>
+                    <tr>
+                        <td>Несовместимость интеграций</td>
+                        <td class="risk-med">Средняя</td>
+                        <td class="risk-high">Высокое</td>
+                        <td>Раннее тестирование, backward compatibility</td>
+                    </tr>
+                    <tr>
+                        <td>Отток клиентов</td>
+                        <td class="risk-med">Средняя</td>
+                        <td class="risk-high">Высокое</td>
+                        <td>Коммуникация: предупреждение → обучение → поддержка</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>KPI миграции</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Сроки milestone</div>
+                <div class="kpi-value">90%+</div>
+                <div class="kpi-target">соблюдение</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Просадка книговыдач</div>
+                <div class="kpi-value">&lt; 10%</div>
+                <div class="kpi-target">восстановление за месяц</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">NPS новой vs старой</div>
+                <div class="kpi-value">+5 п.п.</div>
+                <div class="kpi-target">через 3 месяца</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Adoption Rate</div>
+                <div class="kpi-value">80%</div>
+                <div class="kpi-target">через 1 мес. после перехода</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 9 -->
+<section class="section" id="block-9">
+    <div class="section-header">
+        <div class="section-number">9</div>
+        <div>
+            <div class="section-title">Итоговый вопрос</div>
+            <div class="section-subtitle">Через 3 года IPR ПРОФ — это...</div>
+        </div>
+    </div>
+
+    <div class="vision-block">
+        <p>Через 3 года IPR ПРОФ — это цифровая методическая среда, в которой преподаватель колледжа проводит значительную часть рабочего дня: формирует учебные программы, назначает материалы студентам, создаёт практические задания на основе реальных кейсов от работодателей, отслеживает прогресс групп. Для студента это персональное учебное пространство от первого курса до выпуска — с учебниками, практикой, AI-помощником и портфолио выполненных проектов.</p>
+        <p>Продукт перестал быть «электронной библиотекой для аккредитации» и стал инструментом, без которого колледж не представляет организацию учебного процесса — как не представляет работу без электронного журнала.</p>
+        <p>Ключевой сдвиг: решение о продлении подписки больше не принимается «по инерции» или «для галочки». Оно принимается потому, что 40%+ преподавателей ведут в PROF свои дисциплины, студенты ежедневно открывают платформу, а руководство получает прозрачную аналитику качества образования. <strong>IPR ПРОФ — стандартная инфраструктура СПО, такая же обязательная и привычная, как расписание занятий.</strong></p>
+    </div>
+</section>
+
+<!-- BLOCK 10 -->
+<section class="section" id="block-10">
+    <div class="section-header">
+        <div class="section-number">10</div>
+        <div>
+            <div class="section-title">Самооценка</div>
+            <div class="section-subtitle">Оценка компетенций по каждому блоку</div>
+        </div>
+    </div>
+
+    <div class="card" style="padding: 0; overflow: hidden;">
+        <div class="assessment-row">
+            <div class="assessment-score">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">1. Трансформация продукта</div>
+                <div class="assessment-comment">Прямой опыт: трансформация LMS из инструмента назначения курсов в платформу развития сотрудников</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">7</div>
+            <div class="assessment-info">
+                <div class="assessment-block">2. УМК как точка сборки</div>
+                <div class="assessment-comment">Понимаю структуру ФГОС → ОПОП → РПД, но нет опыта с документооборотом СПО. Компенсирую CustDev</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 70%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">3. Практикоориентированность</div>
+                <div class="assessment-comment">Строил конструктор курсов с практическими заданиями в LMS</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">4. Монетизация</div>
+                <div class="assessment-comment">Опыт в B2B SaaS: retention, upsell, unit-экономика</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">9</div>
+            <div class="assessment-info">
+                <div class="assessment-block">5. AI в продукте</div>
+                <div class="assessment-comment">Внедрял AI в LMS: генерация материалов, автосоздание тестов. Сократили время на 50%</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 90%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">6. Работа с рынком</div>
+                <div class="assessment-comment">Регулярный CustDev (5-12 интервью/квартал), участие в продажах и демо</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">7</div>
+            <div class="assessment-info">
+                <div class="assessment-block">7. Модель развития</div>
+                <div class="assessment-comment">Квартальные roadmap — есть. Горизонт 3 года — масштаб шире, компенсирую системным подходом</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 70%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">9</div>
+            <div class="assessment-info">
+                <div class="assessment-block">8. Редизайн и миграция</div>
+                <div class="assessment-comment">Tech Lead бэкграунд + PM-опыт. Проводил миграцию LMS между платформами</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 90%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row">
+            <div class="assessment-score">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">9. Визионерский вопрос</div>
+                <div class="assessment-comment">Умею видеть целевое состояние и декомпозировать до тактических шагов</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+        <div class="assessment-row" style="background: var(--yellow-light);">
+            <div class="assessment-score" style="background: var(--black); color: var(--yellow);">8</div>
+            <div class="assessment-info">
+                <div class="assessment-block">Общая оценка</div>
+                <div class="assessment-comment"><strong>Сильные стороны:</strong> tech background, EdTech-опыт, AI, data-driven. <strong>Зона роста:</strong> нормативная база СПО, B2G-закупки, работа с регионами</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p><strong>Виталий Смирнов</strong> — Тестовое задание, Product Manager, IPR ПРОФ</p>
+    <p style="margin-top: 0.5rem;">Апрель 2026</p>
+</footer>
+
+<!-- Scroll spy for nav -->
+<script>
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
