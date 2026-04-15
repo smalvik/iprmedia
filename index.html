@@ -704,6 +704,137 @@
             color: var(--yellow);
         }
 
+        /* ===== ROADMAP TREE ===== */
+        .roadmap-tree {
+            padding: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .roadmap-tree svg {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== PRIORITY MATRIX ===== */
+        .matrix {
+            display: grid;
+            grid-template-columns: auto 1fr 1fr;
+            grid-template-rows: auto 1fr 1fr;
+            gap: 2px;
+            margin: 1rem 0;
+            background: var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .matrix-corner {
+            background: var(--bg);
+            padding: 0.75rem;
+        }
+
+        .matrix-header {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.75rem 1rem;
+            text-align: center;
+        }
+
+        .matrix-label {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.75rem 1rem;
+            writing-mode: horizontal-tb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .matrix-cell {
+            background: var(--white);
+            padding: 1rem;
+            min-height: 120px;
+        }
+
+        .matrix-cell.high-impact-low-effort {
+            background: var(--yellow-light);
+            border: 2px solid var(--yellow);
+        }
+
+        .matrix-item {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.6rem;
+            margin: 0.25rem 0;
+            border-radius: 6px;
+            background: var(--bg);
+            display: inline-block;
+        }
+
+        .matrix-item.quick-win {
+            background: var(--yellow);
+            font-weight: 600;
+        }
+
+        .matrix-item.strategic {
+            background: #E3F2FD;
+        }
+
+        .matrix-item.fill-in {
+            background: #F3E5F5;
+        }
+
+        .matrix-axis-label {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== RADAR CHART ===== */
+        .radar-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .radar-wrap svg {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===== FUNNEL ===== */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            margin: 1.5rem 0;
+        }
+
+        .funnel-step {
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--black);
+            position: relative;
+        }
+
+        .funnel-step:nth-child(1) { width: 100%; background: var(--yellow-light); border-radius: 8px 8px 0 0; }
+        .funnel-step:nth-child(2) { width: 85%; background: #FFF3D0; }
+        .funnel-step:nth-child(3) { width: 70%; background: var(--yellow); font-weight: 700; }
+        .funnel-step:nth-child(4) { width: 55%; background: #FFB300; }
+        .funnel-step:nth-child(5) { width: 40%; background: var(--black); color: var(--yellow); font-weight: 700; border-radius: 0 0 8px 8px; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
@@ -719,6 +850,11 @@
             .nav-inner { gap: 0.75rem; }
             .nav-link { font-size: 0.72rem; padding: 0.3rem 0.5rem; }
             .vision-block { padding: 1.5rem; }
+            .matrix { grid-template-columns: auto 1fr; font-size: 0.85rem; }
+            .matrix-cell { min-height: 80px; padding: 0.75rem; }
+            .roadmap-tree { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .roadmap-tree svg { min-width: 700px; }
+            .funnel-step { font-size: 0.8rem; padding: 0.6rem 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -1146,6 +1282,15 @@
             <div class="flow-step accent">Продление + апселл</div>
         </div>
 
+        <h4 style="margin-top: 1.5rem;">Воронка монетизации</h4>
+        <div class="funnel">
+            <div class="funnel-step">📚 Колледж получает базовую подписку</div>
+            <div class="funnel-step">👩‍🏫 Преподаватель создаёт подборки → назначает студентам</div>
+            <div class="funnel-step">📈 Книговыдачи растут → ценность доказана</div>
+            <div class="funnel-step">⬆️ Апселл: +Кейсы +УМК +API</div>
+            <div class="funnel-step">🔄 Продление + расширение пакета</div>
+        </div>
+
         <h4>Сигналы для апселла:</h4>
         <ul>
             <li>Рост книговыдач на 50%+ за квартал → предложить расширенные модули</li>
@@ -1370,25 +1515,115 @@
         </div>
     </div>
 
+    <!-- Real user feedback -->
+    <div class="card card-dark">
+        <h3>Реальная обратная связь пользователей (исследование)</h3>
+        <p>Перед формулированием гипотез изучены реальные отзывы пользователей IPR SMART и конкурентов на Google Play, RuStore, в институциональных отзывах.</p>
+    </div>
+
+    <div class="card">
+        <h3>Отзывы пользователей IPR SMART (Google Play, 3.9★)</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Проблема</th><th>Цитата пользователя</th><th>Тип</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Навигация в ридере</strong></td><td>«При касании дисплея вместо листания выделяется текст» — чтение «практически невозможно»</td><td>UX</td></tr>
+                    <tr><td><strong>Горизонтальный режим</strong></td><td>«Зеркалит половину страницы», шрифт слишком мелкий на смартфонах</td><td>UX</td></tr>
+                    <tr><td><strong>PDF-формат</strong></td><td>«PDF не позволяет менять размер шрифта и положение текста»</td><td>Техническая</td></tr>
+                    <tr><td><strong>Оффлайн-режим</strong></td><td>Приложение «сначала пытается подключиться к интернету» даже для скачанного</td><td>Техническая</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Competitive landscape -->
+    <div class="card">
+        <h3>Конкурентный ландшафт ЭБС (B2G)</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>ЭБС</th><th>Позиция</th><th>Рейтинг</th><th>Сильные стороны</th><th>Слабые стороны</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Лань</strong></td><td>Лидер с 2013</td><td class="risk-high">1.9★</td><td>Широкое проникновение</td><td>«Постоянно вылетает», «невозможно читать»</td></tr>
+                    <tr><td><strong>Юрайт</strong></td><td>ТОП-3</td><td>—</td><td>10 314 учебников, курсы</td><td>Фокус на ВУЗах, не СПО</td></tr>
+                    <tr><td><strong>IPR SMART</strong></td><td>ТОП-3</td><td class="risk-low">3.9★</td><td>Стабильное приложение, экосистема</td><td>UX мобильного ридера</td></tr>
+                    <tr><td><strong>Znanium</strong></td><td>Средний</td><td>—</td><td>Академический контент</td><td>Ограниченный функционал</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card card-highlight" style="margin-top: 0.75rem;">
+            <p style="margin: 0;"><strong>Ключевой инсайт:</strong> IPR SMART стабильнее главного конкурента в 2 раза по рейтингу (3.9★ vs 1.9★). Это конкурентное преимущество не используется в маркетинге.</p>
+        </div>
+    </div>
+
+    <!-- B2B/B2C best practices -->
+    <div class="card">
+        <h3>Лучшие практики из B2B/B2C библиотек</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Фича</th><th>Где реализовано</th><th>Применимость</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Синхронизация позиции</strong> между устройствами</td><td>Kindle, LitRes, Bookmate</td><td><strong>Высокая</strong></td></tr>
+                    <tr><td><strong>Текст↔аудио</strong> с сохранением позиции</td><td>Audible «Read & Listen»</td><td><strong>Высокая</strong></td></tr>
+                    <tr><td><strong>AI-саммаризация</strong> глав</td><td>Blinkist, Bookmate AI</td><td><strong>Критическая</strong></td></tr>
+                    <tr><td><strong>Оффлайн</strong> без проверки интернета</td><td>Kindle, LitRes</td><td><strong>Высокая</strong></td></tr>
+                    <tr><td><strong>Встроенный словарь</strong></td><td>Kindle, Apple Books</td><td>Средняя</td></tr>
+                    <tr><td><strong>Ночной режим</strong></td><td>Все B2C ридеры</td><td>Средняя</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5 Hypotheses -->
     <div class="hypothesis">
         <div class="hypothesis-num">Гипотеза 1</div>
         <h4>«Нет проводника»</h4>
-        <blockquote>Продукт продаётся руководству (B2G), но никто не обучает конечных пользователей. Преподаватели не знают возможностей, студенты не знают о доступе.</blockquote>
+        <blockquote>Продукт продаётся руководству (B2G), но никто не обучает конечных пользователей.</blockquote>
+        <p><strong>Источник:</strong> институциональные отзывы PROFобразование — обратная связь только от руководства, не от конечных пользователей.</p>
         <p><strong>Проверка:</strong> спросить у неактивных — знают ли про ЭБС, проходили ли обучение.</p>
     </div>
 
     <div class="hypothesis">
         <div class="hypothesis-num">Гипотеза 2</div>
         <h4>«Нет интеграции в рабочий процесс»</h4>
-        <blockquote>ЭБС существует отдельно от учебного процесса. Преподаватель использует Word для РПД, Moodle для заданий, файлообменник для материалов.</blockquote>
+        <blockquote>ЭБС существует отдельно. Преподаватель использует Word для РПД, Moodle для заданий.</blockquote>
+        <p><strong>Источник:</strong> отсутствие отзывов о рабочих сценариях — пользователи воспринимают ЭБС как ридер, а не как рабочий инструмент.</p>
         <p><strong>Проверка:</strong> карта инструментов преподавателя — где ЭБС, а где могла бы быть.</p>
     </div>
 
     <div class="hypothesis">
         <div class="hypothesis-num">Гипотеза 3</div>
-        <h4>«Контент не соответствует реальной потребности»</h4>
-        <blockquote>Каталог большой, но преподаватели не находят именно то, что нужно. Контент слишком теоретический — нужна практика.</blockquote>
-        <p><strong>Проверка:</strong> анализ поисковых запросов (что ищут и не находят), интервью про разрыв.</p>
+        <h4>«Мобильный ридер — главный барьер для студентов»</h4>
+        <blockquote>Неудобная навигация, выделение текста вместо скролла, проблемы с PDF — студенты бросают и уходят в Google.</blockquote>
+        <p><strong>Источник:</strong> реальные отзывы Google Play IPR SMART (3.9★).</p>
+        <p><strong>Проверка:</strong> аналитика мобильных сессий, bounce rate, A/B тест нового ридера. Потенциал: <strong>+10-15 NPS pts</strong>.</p>
+    </div>
+
+    <div class="hypothesis">
+        <div class="hypothesis-num">Гипотеза 4</div>
+        <h4>«Аудио и текст живут отдельно»</h4>
+        <blockquote>PROF имеет 1 100+ аудиоматериалов, но нет синхронизации с текстом. Студент не может переключиться с чтения на аудио.</blockquote>
+        <p><strong>Источник:</strong> B2C стандарт — Audible «Read & Listen», LitRes, Tribooks.</p>
+        <p><strong>Проверка:</strong> пилот на 10 изданиях с аудио+текст sync. Потенциал: <strong>рост времени на платформе ×2-3</strong>.</p>
+    </div>
+
+    <div class="hypothesis">
+        <div class="hypothesis-num">Гипотеза 5</div>
+        <h4>«Конкурентное преимущество стабильности не используется»</h4>
+        <blockquote>IPR SMART стабильнее Лани в 2 раза по рейтингу (3.9★ vs 1.9★), но это не транслируется в маркетинг.</blockquote>
+        <p><strong>Источник:</strong> Google Play, RuStore — публичные рейтинги.</p>
+        <p><strong>Проверка:</strong> включить сравнительные рейтинги в sales-материалы, отследить конверсию продления.</p>
+    </div>
+
+    <!-- NPS approach -->
+    <div class="card card-highlight">
+        <h3>Подход к оценке и росту NPS</h3>
+        <p><strong>Текущий NPS неизвестен</strong> — публичных данных нет. Предложение:</p>
+        <ul>
+            <li><strong>Измерение:</strong> in-app NPS-опрос после 5+ книговыдач</li>
+            <li><strong>Сегментация:</strong> преподаватели / студенты / библиотекари — у каждого свой NPS</li>
+            <li><strong>Proxy:</strong> Google Play 3.9★ ≈ NPS +10..+20</li>
+            <li><strong>Рычаги роста:</strong> мобильный ридер (H3) → +10-15 pts, синхронизация (H4) → +5-8 pts, AI-саммаризация → рост activation</li>
+        </ul>
     </div>
 
     <div class="card">
@@ -1407,8 +1642,12 @@
                 <div class="kpi-value">3 → 8</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-label">Usage score low-usage</div>
-                <div class="kpi-value">+10% → +25%</div>
+                <div class="kpi-label">NPS (первый замер)</div>
+                <div class="kpi-value">Запуск → Динамика</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Рейтинг приложения</div>
+                <div class="kpi-value">3.9★ → 4.2★</div>
             </div>
         </div>
     </div>
@@ -1490,6 +1729,230 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- SVG Roadmap Tree -->
+    <div class="card" style="margin-top: 1.5rem;">
+        <h3 style="margin-bottom: 0.5rem;">Дерево развития продукта</h3>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">Визуализация ключевых инициатив и их взаимосвязей</p>
+        <div class="roadmap-tree">
+            <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+                <!-- Year labels -->
+                <rect x="20" y="10" width="120" height="36" rx="18" fill="#FFC928"/>
+                <text x="80" y="33" text-anchor="middle" font-weight="800" font-size="14" fill="#000">2026</text>
+                <rect x="320" y="10" width="120" height="36" rx="18" fill="#FFB300"/>
+                <text x="380" y="33" text-anchor="middle" font-weight="800" font-size="14" fill="#000">2027</text>
+                <rect x="640" y="10" width="120" height="36" rx="18" fill="#000"/>
+                <text x="700" y="33" text-anchor="middle" font-weight="800" font-size="14" fill="#FFC928">2028</text>
+
+                <!-- Connecting arrows between years -->
+                <line x1="140" y1="28" x2="320" y2="28" stroke="#E0E0E0" stroke-width="2" stroke-dasharray="6,4"/>
+                <line x1="440" y1="28" x2="640" y2="28" stroke="#E0E0E0" stroke-width="2" stroke-dasharray="6,4"/>
+
+                <!-- 2026 branches -->
+                <line x1="80" y1="46" x2="80" y2="75" stroke="#FFC928" stroke-width="2"/>
+                <!-- Branch lines from trunk -->
+                <line x1="80" y1="75" x2="30" y2="105" stroke="#FFC928" stroke-width="2"/>
+                <line x1="80" y1="75" x2="80" y2="105" stroke="#FFC928" stroke-width="2"/>
+                <line x1="80" y1="75" x2="130" y2="105" stroke="#FFC928" stroke-width="2"/>
+
+                <!-- 2026 nodes -->
+                <rect x="2" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFC928" stroke-width="1.5"/>
+                <text x="30" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">Рабочий стол</text>
+                <text x="30" y="137" text-anchor="middle" font-size="9" fill="#333">преподава-</text>
+                <text x="30" y="149" text-anchor="middle" font-size="9" fill="#333">теля</text>
+                <text x="30" y="170" text-anchor="middle" font-size="8" fill="#666">Q2</text>
+
+                <rect x="52" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFC928" stroke-width="1.5"/>
+                <text x="80" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">Учебный</text>
+                <text x="80" y="137" text-anchor="middle" font-size="9" fill="#333">трек</text>
+                <text x="80" y="149" text-anchor="middle" font-size="9" fill="#333">студента</text>
+                <text x="80" y="170" text-anchor="middle" font-size="8" fill="#666">Q3</text>
+
+                <rect x="102" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFC928" stroke-width="1.5"/>
+                <text x="130" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">AI-подбор</text>
+                <text x="130" y="137" text-anchor="middle" font-size="9" fill="#333">литерату-</text>
+                <text x="130" y="149" text-anchor="middle" font-size="9" fill="#333">ры (MVP)</text>
+                <text x="130" y="170" text-anchor="middle" font-size="8" fill="#666">Q4</text>
+
+                <!-- 2026 second row -->
+                <line x1="80" y1="185" x2="30" y2="215" stroke="#FFC928" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <line x1="80" y1="185" x2="130" y2="215" stroke="#FFC928" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+                <rect x="2" y="215" width="56" height="65" rx="8" fill="#FFF8E1" stroke="#E0E0E0" stroke-width="1"/>
+                <text x="30" y="235" text-anchor="middle" font-size="9" font-weight="600" fill="#333">CustDev</text>
+                <text x="30" y="247" text-anchor="middle" font-size="9" fill="#666">50+</text>
+                <text x="30" y="259" text-anchor="middle" font-size="9" fill="#666">интервью</text>
+                <text x="30" y="271" text-anchor="middle" font-size="8" fill="#999">Q3</text>
+
+                <rect x="102" y="215" width="56" height="65" rx="8" fill="#FFF8E1" stroke="#E0E0E0" stroke-width="1"/>
+                <text x="130" y="235" text-anchor="middle" font-size="9" font-weight="600" fill="#333">50 кейсов</text>
+                <text x="130" y="247" text-anchor="middle" font-size="9" fill="#666">от инд.</text>
+                <text x="130" y="259" text-anchor="middle" font-size="9" fill="#666">партнёров</text>
+                <text x="130" y="271" text-anchor="middle" font-size="8" fill="#999">Q4</text>
+
+                <!-- Metric 2026 -->
+                <rect x="10" y="300" width="150" height="32" rx="6" fill="#FFC928"/>
+                <text x="85" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#000">WAU/MAU 15%→30%</text>
+
+                <!-- 2027 branches -->
+                <line x1="380" y1="46" x2="380" y2="75" stroke="#FFB300" stroke-width="2"/>
+                <line x1="380" y1="75" x2="300" y2="105" stroke="#FFB300" stroke-width="2"/>
+                <line x1="380" y1="75" x2="350" y2="105" stroke="#FFB300" stroke-width="2"/>
+                <line x1="380" y1="75" x2="400" y2="105" stroke="#FFB300" stroke-width="2"/>
+                <line x1="380" y1="75" x2="450" y2="105" stroke="#FFB300" stroke-width="2"/>
+
+                <!-- Dependency arrows 2026→2027 -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#999"/>
+                    </marker>
+                </defs>
+                <path d="M158,140 C220,140 240,130 298,130" stroke="#999" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="4,3"/>
+                <path d="M158,140 C220,140 240,170 348,150" stroke="#999" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="4,3"/>
+
+                <!-- 2027 nodes -->
+                <rect x="272" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFB300" stroke-width="1.5"/>
+                <text x="300" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">Конструк-</text>
+                <text x="300" y="137" text-anchor="middle" font-size="9" fill="#333">тор</text>
+                <text x="300" y="149" text-anchor="middle" font-size="9" fill="#333">УМК</text>
+                <text x="300" y="170" text-anchor="middle" font-size="8" fill="#666">УМК</text>
+
+                <rect x="322" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFB300" stroke-width="1.5"/>
+                <text x="350" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">500+</text>
+                <text x="350" y="137" text-anchor="middle" font-size="9" fill="#333">кейсов,</text>
+                <text x="350" y="149" text-anchor="middle" font-size="9" fill="#333">стажиров.</text>
+                <text x="350" y="170" text-anchor="middle" font-size="8" fill="#666">Практика</text>
+
+                <rect x="372" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFB300" stroke-width="1.5"/>
+                <text x="400" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">AI: тесты,</text>
+                <text x="400" y="137" text-anchor="middle" font-size="9" fill="#333">суммари-</text>
+                <text x="400" y="149" text-anchor="middle" font-size="9" fill="#333">зация</text>
+                <text x="400" y="170" text-anchor="middle" font-size="8" fill="#666">AI</text>
+
+                <rect x="422" y="105" width="56" height="80" rx="8" fill="#FFF3D0" stroke="#FFB300" stroke-width="1.5"/>
+                <text x="450" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#000">API для</text>
+                <text x="450" y="137" text-anchor="middle" font-size="9" fill="#333">LMS,</text>
+                <text x="450" y="149" text-anchor="middle" font-size="9" fill="#333">SSO</text>
+                <text x="450" y="170" text-anchor="middle" font-size="8" fill="#666">Интеграции</text>
+
+                <!-- 2027 second row -->
+                <line x1="380" y1="185" x2="380" y2="215" stroke="#FFB300" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+                <rect x="352" y="215" width="56" height="55" rx="8" fill="#FFF8E1" stroke="#E0E0E0" stroke-width="1"/>
+                <text x="380" y="232" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Модульная</text>
+                <text x="380" y="244" text-anchor="middle" font-size="9" fill="#666">модель</text>
+                <text x="380" y="256" text-anchor="middle" font-size="9" fill="#666">цен</text>
+
+                <!-- Metric 2027 -->
+                <rect x="305" y="300" width="150" height="32" rx="6" fill="#FFB300"/>
+                <text x="380" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#000">Retention 90%+, ARPU +25%</text>
+
+                <!-- 2028 branches -->
+                <line x1="700" y1="46" x2="700" y2="75" stroke="#000" stroke-width="2"/>
+                <line x1="700" y1="75" x2="630" y2="105" stroke="#000" stroke-width="2"/>
+                <line x1="700" y1="75" x2="680" y2="105" stroke="#000" stroke-width="2"/>
+                <line x1="700" y1="75" x2="730" y2="105" stroke="#000" stroke-width="2"/>
+                <line x1="700" y1="75" x2="780" y2="105" stroke="#000" stroke-width="2"/>
+                <line x1="700" y1="75" x2="830" y2="105" stroke="#000" stroke-width="2"/>
+
+                <!-- Dependency arrows 2027→2028 -->
+                <path d="M478,140 C540,140 570,120 628,125" stroke="#999" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="4,3"/>
+
+                <!-- 2028 nodes -->
+                <rect x="602" y="105" width="56" height="80" rx="8" fill="#333" stroke="#000" stroke-width="1.5"/>
+                <text x="630" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Единое</text>
+                <text x="630" y="137" text-anchor="middle" font-size="8" fill="#ccc">рабочее</text>
+                <text x="630" y="149" text-anchor="middle" font-size="8" fill="#ccc">место</text>
+                <text x="630" y="170" text-anchor="middle" font-size="8" fill="#FFC928">Препод.</text>
+
+                <rect x="652" y="105" width="56" height="80" rx="8" fill="#333" stroke="#000" stroke-width="1.5"/>
+                <text x="680" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Персон.</text>
+                <text x="680" y="137" text-anchor="middle" font-size="8" fill="#ccc">среда</text>
+                <text x="680" y="149" text-anchor="middle" font-size="8" fill="#ccc">студента</text>
+                <text x="680" y="170" text-anchor="middle" font-size="8" fill="#FFC928">Студент</text>
+
+                <rect x="702" y="105" width="56" height="80" rx="8" fill="#333" stroke="#000" stroke-width="1.5"/>
+                <text x="730" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Управл.</text>
+                <text x="730" y="137" text-anchor="middle" font-size="8" fill="#ccc">качеством</text>
+                <text x="730" y="149" text-anchor="middle" font-size="8" fill="#ccc">образов.</text>
+                <text x="730" y="170" text-anchor="middle" font-size="8" fill="#FFC928">Колледж</text>
+
+                <rect x="752" y="105" width="56" height="80" rx="8" fill="#333" stroke="#000" stroke-width="1.5"/>
+                <text x="780" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Аналит.</text>
+                <text x="780" y="137" text-anchor="middle" font-size="8" fill="#ccc">панель</text>
+                <text x="780" y="149" text-anchor="middle" font-size="8" fill="#ccc">региона</text>
+                <text x="780" y="170" text-anchor="middle" font-size="8" fill="#FFC928">Регион</text>
+
+                <rect x="802" y="105" width="56" height="80" rx="8" fill="#333" stroke="#000" stroke-width="1.5"/>
+                <text x="830" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Кейсы,</text>
+                <text x="830" y="137" text-anchor="middle" font-size="8" fill="#ccc">стажир.,</text>
+                <text x="830" y="149" text-anchor="middle" font-size="8" fill="#ccc">оценка</text>
+                <text x="830" y="170" text-anchor="middle" font-size="8" fill="#FFC928">Индустр.</text>
+
+                <!-- Metric 2028 -->
+                <rect x="625" y="300" width="150" height="32" rx="6" fill="#000"/>
+                <text x="700" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#FFC928">Каждый 3-й колледж</text>
+
+                <!-- Legend -->
+                <rect x="250" y="370" width="400" height="140" rx="10" fill="#F8F9FA" stroke="#E0E0E0" stroke-width="1"/>
+                <text x="450" y="395" text-anchor="middle" font-size="11" font-weight="700" fill="#333">Стадии зрелости</text>
+
+                <rect x="280" y="410" width="14" height="14" rx="3" fill="#FFF3D0" stroke="#FFC928" stroke-width="1"/>
+                <text x="300" y="422" font-size="10" fill="#333">Quick Wins — быстрый результат, валидация гипотез</text>
+
+                <rect x="280" y="435" width="14" height="14" rx="3" fill="#FFF3D0" stroke="#FFB300" stroke-width="1"/>
+                <text x="300" y="447" font-size="10" fill="#333">Масштабирование — системные продуктовые фичи</text>
+
+                <rect x="280" y="460" width="14" height="14" rx="3" fill="#333" stroke="#000" stroke-width="1"/>
+                <text x="300" y="472" font-size="10" fill="#333">Целевая модель — платформа для всех стейкхолдеров</text>
+
+                <line x1="280" y1="490" x2="294" y2="490" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/>
+                <text x="300" y="494" font-size="10" fill="#333">Зависимость между инициативами</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Priority Matrix Impact/Effort -->
+    <div class="card" style="margin-top: 1.5rem;">
+        <h3 style="margin-bottom: 0.5rem;">Матрица приоритизации</h3>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">Impact / Effort — фокус на Quick Wins (высокий эффект, низкие усилия)</p>
+        <div class="matrix">
+            <div class="matrix-corner"></div>
+            <div class="matrix-header">Низкие усилия</div>
+            <div class="matrix-header">Высокие усилия</div>
+
+            <div class="matrix-label">Высокий<br>Impact</div>
+            <div class="matrix-cell high-impact-low-effort">
+                <div style="font-size: 0.75rem; font-weight: 700; color: #996100; margin-bottom: 0.5rem;">⭐ QUICK WINS</div>
+                <div class="matrix-item quick-win">Рабочий стол преподавателя</div>
+                <div class="matrix-item quick-win">Учебный трек студента</div>
+                <div class="matrix-item quick-win">Оффлайн-чтение без проверки</div>
+                <div class="matrix-item quick-win">CustDev 50+ интервью</div>
+            </div>
+            <div class="matrix-cell">
+                <div style="font-size: 0.75rem; font-weight: 700; color: #1565C0; margin-bottom: 0.5rem;">🎯 СТРАТЕГИЧЕСКИЕ</div>
+                <div class="matrix-item strategic">Конструктор УМК</div>
+                <div class="matrix-item strategic">AI-суммаризация + тесты</div>
+                <div class="matrix-item strategic">API для LMS / SSO</div>
+                <div class="matrix-item strategic">Модульная модель цен</div>
+            </div>
+
+            <div class="matrix-label">Низкий<br>Impact</div>
+            <div class="matrix-cell">
+                <div style="font-size: 0.75rem; font-weight: 700; color: #666; margin-bottom: 0.5rem;">✅ ЗАПОЛНЯЕМ</div>
+                <div class="matrix-item fill-in">Ночной режим ридера</div>
+                <div class="matrix-item fill-in">Встроенный словарь</div>
+                <div class="matrix-item fill-in">Мультиформатность</div>
+            </div>
+            <div class="matrix-cell">
+                <div style="font-size: 0.75rem; font-weight: 700; color: #999; margin-bottom: 0.5rem;">⏳ ОТЛОЖИТЬ</div>
+                <div class="matrix-item">Аналитика по регионам</div>
+                <div class="matrix-item">Цифровые стажировки</div>
+                <div class="matrix-item">Синхронизация аудио+текст</div>
+            </div>
+        </div>
+        <div class="matrix-axis-label">← Усилия →</div>
     </div>
 </section>
 
@@ -1658,6 +2121,78 @@
         <div>
             <div class="section-title">Самооценка</div>
             <div class="section-subtitle">Оценка компетенций по каждому блоку</div>
+        </div>
+    </div>
+
+    <!-- Radar Chart -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <h3 style="margin-bottom: 0.5rem;">Профиль компетенций</h3>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">Визуализация сильных сторон и зон роста</p>
+        <div class="radar-wrap">
+            <svg viewBox="0 0 440 420" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+                <!-- 9-sided radar: 40° per axis, center (220,210), radius 160 -->
+                <!-- Background grid — concentric nonagons -->
+                <!-- Level 10 (r=160) -->
+                <polygon points="220,50 323,87 378,182 359,290 275,360 165,360 81,290 62,182 117,87" fill="none" stroke="#E0E0E0" stroke-width="0.5"/>
+                <!-- Level 8 (r=128) -->
+                <polygon points="220,82 302,103 346,188 331,274 256,330 184,330 109,274 94,188 138,103" fill="none" stroke="#E0E0E0" stroke-width="0.5"/>
+                <!-- Level 6 (r=96) -->
+                <polygon points="220,114 282,136 315,193 303,258 253,300 187,300 137,258 125,193 158,136" fill="none" stroke="#E0E0E0" stroke-width="0.5"/>
+                <!-- Level 4 (r=64) -->
+                <polygon points="220,146 261,161 283,199 275,242 241,270 199,270 165,242 157,199 179,161" fill="none" stroke="#E0E0E0" stroke-width="0.5"/>
+
+                <!-- Axis lines -->
+                <line x1="220" y1="210" x2="220" y2="50" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="323" y2="87" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="378" y2="182" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="359" y2="290" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="275" y2="360" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="165" y2="360" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="81" y2="290" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="62" y2="182" stroke="#E0E0E0" stroke-width="0.5"/>
+                <line x1="220" y1="210" x2="117" y2="87" stroke="#E0E0E0" stroke-width="0.5"/>
+
+                <!-- Data polygon: scores 8,7,8,8,9,8,7,9,8 -->
+                <polygon points="220,82 292,124 346,188 331,274 269,345 176,330 121,264 78,185 138,103"
+                         fill="rgba(255,201,40,0.25)" stroke="#FFC928" stroke-width="2.5"/>
+
+                <!-- Data points -->
+                <circle cx="220" cy="82" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="292" cy="124" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="346" cy="188" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="331" cy="274" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="269" cy="345" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="176" cy="330" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="121" cy="264" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="78" cy="185" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+                <circle cx="138" cy="103" r="5" fill="#FFC928" stroke="#000" stroke-width="1.5"/>
+
+                <!-- Score labels -->
+                <text x="220" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#000">8</text>
+                <text x="302" y="118" text-anchor="start" font-size="12" font-weight="700" fill="#000">7</text>
+                <text x="356" y="192" text-anchor="start" font-size="12" font-weight="700" fill="#000">8</text>
+                <text x="341" y="280" text-anchor="start" font-size="12" font-weight="700" fill="#000">8</text>
+                <text x="278" y="356" text-anchor="start" font-size="12" font-weight="700" fill="#000">9</text>
+                <text x="164" y="342" text-anchor="end" font-size="12" font-weight="700" fill="#000">8</text>
+                <text x="111" y="270" text-anchor="end" font-size="12" font-weight="700" fill="#000">7</text>
+                <text x="68" y="190" text-anchor="end" font-size="12" font-weight="700" fill="#000">9</text>
+                <text x="128" y="97" text-anchor="end" font-size="12" font-weight="700" fill="#000">8</text>
+
+                <!-- Block name labels -->
+                <text x="220" y="36" text-anchor="middle" font-size="10" font-weight="600" fill="#333">1. Трансформация</text>
+                <text x="336" y="78" text-anchor="start" font-size="10" fill="#333">2. УМК</text>
+                <text x="392" y="185" text-anchor="start" font-size="10" fill="#333">3. Практика</text>
+                <text x="372" y="298" text-anchor="start" font-size="10" fill="#333">4. Монетизация</text>
+                <text x="283" y="378" text-anchor="start" font-size="10" fill="#333">5. AI</text>
+                <text x="155" y="378" text-anchor="end" font-size="10" fill="#333">6. Рынок</text>
+                <text x="68" y="298" text-anchor="end" font-size="10" fill="#333">7. Roadmap</text>
+                <text x="48" y="185" text-anchor="end" font-size="10" fill="#333">8. Редизайн</text>
+                <text x="104" y="78" text-anchor="end" font-size="10" fill="#333">9. Визия</text>
+            </svg>
+        </div>
+        <div style="text-align: center; margin-top: 0.5rem;">
+            <span style="display: inline-block; background: var(--yellow); width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; margin-right: 0.3rem;"></span>
+            <span style="font-size: 0.85rem; color: var(--text-light);">Средняя оценка: <strong style="color: var(--black);">8.0 / 10</strong></span>
         </div>
     </div>
 
