@@ -515,4 +515,4 @@ Feature parity → миграция данных → тестирование н
 Product Manager — IPR ПРОФ
 Апрель 2026
 
-smalvik@proton.me
+ТГ @smalvik
