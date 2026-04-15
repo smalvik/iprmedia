@@ -160,13 +160,11 @@ style: |
 ### За счёт чего продукт станет ежедневным инструментом
 
 <div style="text-align:center;margin-top:40px">
-<svg width="150" height="150" viewBox="0 0 100 100" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round">
-  <path d="M70 18a32 32 0 0 1 10 32"/>
-  <polygon points="78,47 84,35 72,38" fill="#000" stroke="none"/>
-  <path d="M30 82a32 32 0 0 1-10-32"/>
-  <polygon points="22,53 16,65 28,62" fill="#000" stroke="none"/>
-  <rect x="38" y="38" width="24" height="24" rx="4" stroke-width="2.5"/>
-  <path d="M45 50h10M50 45v10" stroke-width="2.5"/>
+<svg width="150" height="150" viewBox="0 0 100 100" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M65 20 A28 28 0 0 1 65 80"/>
+  <path d="M65 80l6-10M65 80l-9-6"/>
+  <path d="M35 80 A28 28 0 0 1 35 20"/>
+  <path d="M35 20l-6 10M35 20l9 6"/>
 </svg>
 </div>
 
